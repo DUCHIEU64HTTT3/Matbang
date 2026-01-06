@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Chat</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: #f4f6fb;
+    }
+
+    header {
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      color: white;
+      padding: 16px 24px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .container {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 280px;
+      background: white;
+      border-right: 1px solid #e5e7eb;
+      overflow-y: auto;
+    }
+
+    .user-item {
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    .user-item:hover {
+      background: #eef2ff;
+    }
+
+    /* ===== CHAT ===== */
+    .chat-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #f8fafc;
+    }
+
+    .chat-header {
+      padding: 14px 18px;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      font-weight: 600;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .msg {
+      max-width: 70%;
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .msg.user {
+      background: #e5e7eb;
+      align-self: flex-start;
+    }
+
+    .msg.admin {
+      background: #6366f1;
+      color: white;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+      padding: 14px;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #6366f1;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .user-item {
+        padding: 12px 14px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+        }
+
+    .user-item:hover {
+        background: #f1f5f9;
+ }
+
+    .user-item.active {
+        background: linear-gradient(90deg, #6366f1, #3b82f6);
+        color: white;
+        font-weight: 600;
+      }
+      .chat-box {
+        display: none;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 320px;
+        height: 420px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        z-index: 9999;
+      }
+
+      /* Khi mở */
+      .chat-box.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+  </style>
+</head>
+
+<body>
+
+<header>💬 Admin Chat Panel</header>
+
+<div class="container">
+  <!-- DANH SÁCH USER -->
+  <div class="sidebar" id="userList"></div>
+
+  <!-- KHUNG CHAT -->
+  <div class="chat-panel">
+    <div class="chat-header">
+        <span id="chatWithText">Chọn người dùng để chat</span>
+    </div>
+
+
+    <div class="messages" id="chatMessages"></div>
+
+    <div class="chat-input">
+      <input id="replyText" placeholder="Nhập trả lời..." />
+      <button id="btnSend">Gửi</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/chat-admin.js"></script>
+</body>
+</html>

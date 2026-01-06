@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat với shop</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: #f4f6fb;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      color: white;
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header button {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: #f8fafc;
+    }
+
+    .msg {
+      max-width: 75%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .msg.user {
+      background: #6366f1;
+      color: white;
+      margin-left: auto;
+    }
+
+    .msg.admin {
+      background: #e5e7eb;
+      color: #111;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #6366f1;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <button onclick="history.back()">←</button>
+  💬 Chat với shop
+</header>
+
+<div id="chatMessages" class="messages">
+  Đang tải tin nhắn...
+</div>
+
+<div class="chat-input">
+  <input id="chatText" placeholder="Nhập tin nhắn..." />
+  <button id="btnSendChat">Gửi</button>
+</div>
+
+<script type="module" src="js/chat-user.js"></script>
+</body>
+</html>

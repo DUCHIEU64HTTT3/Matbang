@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Superset</title>
+
+  <style>
+    :root {
+      --header-height: 86px;   /* chỉnh nếu header cao/thấp hơn */
+      --bg: #f6f7fb;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden; /* ✅ không scroll ngang */
+    }
+
+    .page {
+      height: 100vh;            /* ✅ full màn hình */
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      height: var(--header-height);
+      padding: 14px 18px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .desc {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .embed-wrap {
+      flex: 1;                  /* ✅ phần còn lại dành cho dashboard */
+      padding: 12px;
+      min-height: 0;            /* quan trọng để iframe co giãn đúng */
+    }
+
+    .card {
+      height: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;         /* ✅ tránh tràn gây scroll ngang */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <h1>Dashboard phân tích mặt bằng</h1>
+      <p class="desc">
+        Tổng quan rating, số đánh giá và xếp hạng các địa điểm theo dữ liệu thu thập được.
+      </p>
+    </header>
+
+    <main class="embed-wrap">
+      <div class="card">
+        <!-- 🔁 Đổi URL dashboard ở đây -->
+        <iframe
+          src="http://localhost:8088/superset/dashboard/2/"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

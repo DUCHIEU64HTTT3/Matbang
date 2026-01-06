@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Sửa bài mặt bằng</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6366f1, #3b82f6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 520px;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+      animation: fadeUp 0.5s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: #4f46e5;
+      margin-bottom: 6px;
+    }
+
+    .logo span {
+      color: #f59e0b;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .row .form-group {
+      flex: 1;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .btn-save {
+      color: #fff;
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+      box-shadow: 0 10px 25px rgba(249,115,22,0.5);
+    }
+
+    .btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(249,115,22,0.6);
+    }
+
+    .btn-back {
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    .btn-back:hover {
+      background: #e2e8f0;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="logo">HieuZ.COM</div>
+    <div class="subtitle">Quản lý & chỉnh sửa bài mặt bằng</div>
+
+    <h2>✏️ Sửa bài mặt bằng</h2>
+
+    <div class="form-group">
+      <label>Tên mặt bằng</label>
+      <input id="ten" placeholder="VD: Shop mặt tiền Quận 1">
+    </div>
+
+    <div class="form-group">
+      <label>Địa chỉ</label>
+      <input id="diachi" placeholder="123 Lê Lợi">
+    </div>
+
+    <div class="form-group">
+      <label>Thành phố</label>
+      <input id="thanhpho" placeholder="TP.HCM / Hà Nội">
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>Giá (triệu/tháng)</label>
+        <input id="gia" type="number">
+      </div>
+      <div class="form-group">
+        <label>Diện tích (m²)</label>
+        <input id="dientich" type="number">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Loại hình</label>
+      <select id="loai">
+        <option value="Shop">Shop</option>
+        <option value="Nhà">Nhà</option>
+        <option value="Văn phòng">Văn phòng</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Phân khúc</label>
+      <select id="phan_khuc">
+        <option value="tiemnang">Tiềm năng</option>
+        <option value="caocap">Cao cấp</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Hình ảnh</label>
+      <input id="hinhanh" placeholder="Link ảnh (https://...)">
+    </div>
+
+    <div class="actions">
+      <button class="btn-save" onclick="updatePost()">💾 Lưu</button>
+      <button class="btn-back" onclick="location.href='index.html'">⬅ Quay lại</button>
+    </div>
+
+    <div class="footer">
+      © 2025 SmartRent
+    </div>
+  </div>
+
+  <script type="module" src="js/edit.js"></script>
+</body>
+</html>

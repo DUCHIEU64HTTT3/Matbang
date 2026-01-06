@@ -1,0 +1,599 @@
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+/* ================= FLOATING CHAT BUTTON ================= */
+/* ================= CHAT BUTTON ================= */
+
+    .chat-header {
+      padding: 12px;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 6px;
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .msg {
+      margin-bottom: 8px;
+      display: flex;
+    }
+
+    .msg.user {
+      justify-content: flex-end;
+    }
+
+    .msg.bot {
+      justify-content: flex-start;
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .msg.user .bubble {
+      background: #111;
+      color: #fff;
+    }
+
+    .msg.bot .bubble {
+      background: #f1f5f9;
+      color: #111;
+    }
+
+    .chat-options {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chat-option {
+      background: #e0e7ff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+/* ================= BODY BACKGROUND ================= */
+body {
+  min-height: 100vh;
+  color: #1f2937;
+  background:
+    radial-gradient(circle at top left, #e0e7ff, transparent 60%),
+    radial-gradient(circle at bottom right, #dbeafe, transparent 60%),
+    linear-gradient(180deg, #f8f9ff, #eef2ff);
+}
+
+/* ================= HEADER ================= */
+.top-bar {
+  background: linear-gradient(90deg, #1aa602, #3b82f6);
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #fde68a;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ================= BUTTON ================= */
+button {
+  border: none;
+  cursor: pointer;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* ================= PAGE ================= */
+.page {
+  display: flex;
+  gap: 24px;
+  padding: 30px;
+  margin: 20px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+}
+
+/* ================= FILTER ================= */
+.filter {
+  width: 220px;
+  background: linear-gradient(180deg, #ffffff, #f1f5ff);
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow:
+    0 10px 30px rgba(99,102,241,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.filter h3 {
+  margin-bottom: 16px;
+  color: #4f46e5;
+}
+
+.filter-item {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  background: #f8fafc;
+  transition: 0.25s;
+}
+
+.filter-item:hover {
+  background: linear-gradient(90deg, #c6f163, #3b82f6);
+  color: white;
+  box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+}
+
+/* ================= LISTINGS ================= */
+.listings {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+  background: rgba(255,255,255,0.25);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(99,102,241,0.3);
+}
+
+/* ================= IMAGE FIX TRÀN ================= */
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: #e5e7eb;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* ================= TEXT ================= */
+.card h4 {
+  margin-bottom: 6px;
+  color: #1e3a8a;
+}
+
+.card p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+/* ================= TAG ================= */
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #6366f1;
+  color: white;
+}
+
+.tag.green {
+  background: #22c55e;
+}
+
+.tag.orange {
+  background: #f97316;
+}
+
+
+.chat-header {
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  color: #fff;
+  padding: 12px;
+  font-weight: 700;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f8fafc;
+}
+
+.chat-msg {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  max-width: 85%;
+}
+
+.chat-user {
+  background: #3b82f6;
+  color: #fff;
+  margin-left: auto;
+}
+
+.chat-bot {
+  background: #e5e7eb;
+  color: #111;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 100px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+}
+
+.chat-input button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #6366f1;
+  color: #fff;
+  cursor: pointer;
+}
+.chat-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:8px;
+}
+
+.chat-option{
+  padding: 6px;px 12px;
+  border-radius:999px;
+  background:#eef2ff;
+  color:#1e40af;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  border:1px solid #c7d2fe;
+  transition:.2s;
+}
+
+.chat-option:hover{
+  background:#6366f1;
+  color:#fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .filter {
+    width: 100%;
+  }
+}
+/*So sanh 2 mặt bằng kinh doanh*/
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .filter {
+    width: 100%;
+  }
+
+  /* Modal full width trên mobile */
+  #compare-modal .modal-content {
+    width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* ================= COMPARE BAR ================= */
+#compare-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: linear-gradient(90deg, #2563eb, #0d6efd);
+  color: white;
+  padding: 14px 24px;
+  z-index: 999;
+
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
+}
+
+#compare-bar span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#compare-bar button {
+  background: white;
+  color: #0d6efd;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#compare-bar button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.4);
+}
+
+/* ================= MODAL ================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ================= MODAL CONTENT (TO + ĐẸP) ================= */
+#compare-modal .modal-content {
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #e5e7eb;
+
+  width: 900px;                /* 👈 TO RÕ */
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  padding: 28px 32px;
+  border-radius: 18px;
+
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+
+/* ================= MODAL TITLE ================= */
+#compare-modal h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+#compare-modal h3 {
+  margin-top: 18px;
+  font-size: 18px;
+}
+
+/* ================= BUSINESS GOAL SELECT ================= */
+#businessGoal {
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin: 10px 0 20px;
+  font-weight: 700;
+  font-size: 14px;
+
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+}
+
+/* ================= COMPARE TABLE ================= */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 15px;
+  table-layout: fixed;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.compare-table th {
+  background: #020617;
+  color: #93c5fd;
+  font-weight: 800;
+  text-align: center;
+}
+
+.compare-table td {
+  text-align: center;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.compare-table td:first-child {
+  text-align: left;
+  font-weight: 700;
+  color: #f8fafc;
+  width: 30%;
+}
+
+.compare-table tr:hover {
+  background: rgba(148,163,184,0.08);
+}
+
+/* ================= TOTAL SCORE ROW ================= */
+.compare-table tr:last-child td {
+  background: rgba(37,99,235,0.15);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* ================= BAR INDICATOR ================= */
+.bar {
+  height: 10px;
+  background: #1e293b;
+  border-radius: 999px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ================= CHART ================= */
+#compareChart {
+  margin-top: 24px;
+}
+
+/* ================= CLOSE BUTTON ================= */
+#compare-modal button {
+  margin-top: 20px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#compare-modal button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(34,197,94,0.4);
+}
+/* ===== Compare table UI (bảng to, dễ nhìn) ===== */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 10px;
+  font-size: 15px;
+}
+
+.compare-table th, .compare-table td {
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 14px 12px;
+  vertical-align: top;
+}
+
+.compare-table th {
+  background: rgba(255,255,255,0.06);
+  font-weight: 800;
+  text-align: center;
+}
+
+.cmp-cell { display: flex; flex-direction: column; gap: 8px; }
+.cmp-score { font-weight: 900; font-size: 18px; }
+.cmp-raw { font-size: 12px; opacity: .85; }
+.cmp-note { font-size: 12px; opacity: .75; margin-top: 4px; }
+
+.cmp-bar {
+  height: 10px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.cmp-bar span { display:block; height:100%; width:0; border-radius: 999px; }
+.cmp-bar.a span { background: #3b82f6; }
+.cmp-bar.b span { background: #10b981; }
+
+.cmp-total { background: rgba(255,255,255,0.06); }
+.cmp-total-score { font-weight: 900; font-size: 20px; text-align: center; }

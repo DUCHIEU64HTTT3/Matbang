@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng bài mặt bằng | HIEUZ.COM</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1092de, #3b82f6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .post-box {
+      background: white;
+      width: 100%;
+      max-width: 480px;
+      padding: 32px;
+      border-radius: 22px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #4f46e5;
+      margin-bottom: 6px;
+    }
+
+    .logo span {
+      color: #f59e0b;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #1e293b;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      font-size: 14px;
+      transition: 0.25s;
+      background: #fff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+      box-shadow: 0 8px 25px rgba(249,115,22,0.5);
+      transition: 0.25s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(249,115,22,0.6);
+    }
+
+    .footer-text {
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="post-box">
+    <div class="logo">HIEUZ<span>.COM</span></div>
+    <div class="subtitle">Đăng thông tin mặt bằng cho thuê</div>
+
+    <h2>Đăng bài mặt bằng</h2>
+
+    <div class="form-group">
+      <input id="ten" placeholder="🏢 Tên mặt bằng">
+    </div>
+
+    <div class="form-group">
+      <input id="diachi" placeholder="📍 Địa chỉ">
+    </div>
+
+    <!-- ✅ THÀNH PHỐ -->
+    <div class="form-group">
+      <input id="thanhpho" placeholder="🏙 Thành phố (VD: TP.HCM)">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <input id="gia" type="number" placeholder="💰 Giá (triệu/tháng)">
+      </div>
+      <div class="form-group">
+        <input id="dientich" type="number" placeholder="📐 Diện tích (m²)">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select id="loai">
+        <option value="">🏠 Chọn loại hình</option>
+        <option value="Shop">Shop</option>
+        <option value="Văn phòng">Văn phòng</option>
+        <option value="Kho xưởng">Kho xưởng</option>
+        <option value="Nhà hàng">Nhà hàng</option>
+        <option value="Nhà">Nhà</option>
+        <option value="Cafe">Cafe</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <select id="phan_khuc">
+        <option value="">⭐ Chọn phân khúc</option>
+        <option value="tiemnang">Tiềm năng</option>
+        <option value="caocap">Cao cấp</option>
+        <option value="giatot">Giá tốt</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input id="hinhanh" placeholder="🖼 Link hình ảnh">
+    </div>
+
+    <button class="btn-submit" onclick="addPost()">
+      🚀 Đăng bài
+    </button>
+
+    <div class="footer-text">
+      © 2025 HIEUZ.COM
+    </div>
+  </div>
+
+  <script type="module" src="js/post.js"></script>
+</body>
+</html>

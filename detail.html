@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chi tiết mặt bằng</title>
+
+  <!-- ===== LEAFLET MAP ===== -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: #02849b;
+    }
+
+    header {
+      background: linear-gradient(90deg, #06d792, #3b82f6);
+      color: white;
+      padding: 18px 40px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* ===== TOP ===== */
+    .detail-top {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 25px;
+      align-items: flex-start;
+    }
+
+    .detail-img img {
+      width: 420px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .detail-info {
+      flex: 1;
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .detail-info h2 {
+      margin-top: 0;
+    }
+
+    .avg-rating {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 10px;
+      color: #facc15;
+    }
+
+    /* ===== MAP ===== */
+    .map-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 25px 0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    #map {
+      height: 320px;
+      border-radius: 12px;
+    }
+
+    /* ===== REVIEW ===== */
+    .rating-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      margin-top: 20px;
+    }
+
+    .review-container {
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+
+    .review-item { padding: 8px 0; }
+
+    .review-item b { font-size: 14px; }
+
+    .review-item p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+
+    .rating-box input,
+    .rating-box select,
+    .rating-box textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .rating-box textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .rating-box button {
+      width: 100%;
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .detail-top { flex-direction: column; }
+      .detail-img img { width: 100%; height: 240px; }
+    }
+
+    /* ===== NÚT CHAT FLOAT ===== */
+    .chat-float-btn {
+      position: fixed;
+      bottom: 90px;
+      right: 22px;
+      z-index: 999;
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>Chi tiết mặt bằng</header>
+<div class="page">
+  <!-- Nội dung chi tiết render bằng JS -->
+  <div id="detailBox"></div>
+</div>
+
+<!-- JS chi tiết + map + review -->
+<script type="module" src="js/detail.js"></script>
+
+<!-- ===== NÚT CHAT (CÁCH 2) ===== -->
+<header>Cảm ơn quý khách đã quan tâm và theo dõi</header>
+
+<div class="page">
+  <div id="detailBox"></div>
+</div>
+
+<!-- ===== NÚT USER CHAT ===== -->
+<button
+  id="chatUserBtn"
+  class="chat-float-btn"
+  onclick="location.href='chat-user.html'">
+  💬 Chat với shop
+</button>
+
+<!-- ===== NÚT ADMIN CHAT ===== -->
+<button
+  id="chatAdminBtn"
+  class="chat-float-btn"
+  onclick="location.href='chat.html'"
+  style="display:none">
+  🧑‍💼 Quản lý chat
+</button>
+
+<script type="module" src="js/detail.js"></script>
+<script type="module" src="js/role-ui.js"></script>
+</body>
+</html>

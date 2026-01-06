@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>HIEUZ.COM</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ================= FIX CHAT UI ================= -->
+  <style>
+    /* NÚT CHAT NỔI */
+    #btnChat {
+      position: fixed;
+      right: 20px;
+      bottom: 60px;
+      z-index: 10000;
+
+      padding: 20px 18px;
+      border-radius: 50px;
+      background: #6366f1;
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* CHAT BOX */
+    .chat-box {
+      display: none;              /* ❌ Ẩn mặc định */
+      position: fixed;
+      right: 20px;
+      bottom: 90px;               /* nằm trên nút chat */
+      width: 320px;
+      height: 420px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 9999;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .chat-box.open {
+      display: flex;              /* ✅ Hiện khi mở */
+    }
+
+    .chat-header {
+      padding: 12px;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 6px;
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<script type="module" src="js/xuat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<header class="top-bar">
+  <div class="logo">HIEUZ<span>.COM</span></div>
+
+  <div class="top-actions">
+    <button
+      id="btnAddPost"
+      class="btn-primary"
+      style="display:none"
+      onclick="location.href='post.html'">
+      ➕ Đăng bài
+    </button>
+
+    <!-- ✅ NÚT CHAT (GỌI toggleChat) -->
+    <button id="btnChat" onclick="toggleChat()">
+      💬 Chatbot
+    </button>
+
+    <div id="authButtons">
+      <button class="btn-outline" onclick="location.href='login.html'">
+        Đăng nhập
+      </button>
+      <button class="btn-primary" onclick="location.href='register.html'">
+        Đăng ký
+      </button>
+    </div>
+
+    <div id="userBox"></div>
+  </div>
+</header>
+
+<div class="page">
+  <aside class="filter" id="filterBox">
+    <h3>Menu</h3>
+    <div class="filter-item" id="filterNewest">
+      🔥 Tất cả mặt bằng
+    </div>
+    <div class="filter-item" id="filterHot">
+      ⭐ Top 5 mặt bằng Hot nhất
+    </div>
+    <div
+      class="filter-item"
+      onclick="location.href='dashboard.html'"
+      style="cursor: pointer;"
+    >
+      📊 Dashboard
+    </div>
+
+  </aside>
+
+  <main id="listings" class="listings"></main>
+</div>
+
+<!-- ================= CHAT BOX ================= -->
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">
+    🤖 Trợ lý thông minh
+  </div>
+
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <div class="chat-input">
+    <input
+      id="chatInput"
+      placeholder="Hỏi về mặt bằng, giá, khu vực..."
+    />
+    <button onclick="sendMessage()">Gửi</button>
+  </div>
+</div>
+<!-- 🧠 THANH SO SÁNH MẶT BẰNG -->
+<div id="compare-bar" style="display:none">
+  <span>Đã chọn mặt bằng để so sánh</span>
+  <button onclick="openCompare()">So sánh ngay</button>
+</div>
+<!-- 🧠 MODAL SO SÁNH KINH DOANH -->
+<div id="compare-modal" class="modal">
+  <div class="modal-content">
+
+    <h2>📊 So sánh mặt bằng chi tiết</h2>
+
+    <!-- 🎯 MỤC TIÊU KINH DOANH -->
+    <div style="margin: 12px 0;">
+      <label><b>🎯 Mục tiêu kinh doanh:</b></label><br />
+      <select id="businessGoal">
+        <option value="cafe">☕ Quán café</option>
+        <option value="shop">🛍 Shop bán lẻ</option>
+        <option value="office">🏢 Văn phòng</option>
+        <option value="home">🏠 Nhà ở</option>
+        <option value="food">🍜 Quán ăn</option>
+        <option value="factory">🏭 Xưởng công nghiệp / kho bãi</option>
+
+      </select>
+    </div>
+
+    <!-- 🧾 BẢNG SO SÁNH -->
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Tiêu chí</th>
+          <th>Mặt bằng A</th>
+          <th>Mặt bằng B</th>
+        </tr>
+      </thead>
+      <tbody id="compare-table-body"></tbody>
+    </table>
+
+    <!-- 📊 BIỂU ĐỒ -->
+    <canvas id="compareChart" height="260"></canvas>
+
+    <h3 style="margin-top:12px">
+      👉 Đề xuất kinh doanh:
+      <span id="winner"></span>
+    </h3>
+
+    <button onclick="closeCompare()">Đóng</button>
+  </div>
+</div>
+
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/chat.js"></script>
+<script src="js/compare.js"></script>
+</body>
+</html>
